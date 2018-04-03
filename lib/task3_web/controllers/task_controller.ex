@@ -8,7 +8,6 @@ defmodule Task3Web.TaskController do
 
   def index(conn, _params) do
     tasks = Issue.list_tasks()
-    IO.inspect(tasks)
     render(conn, "index.json", tasks: tasks)
   end
 

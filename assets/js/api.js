@@ -24,9 +24,13 @@ class TheServer {
                 store.dispatch({
                     type: 'USERS_LIST',
                     users: resp.data,
-                });
+                })
             },
-        });
+        }).then(() =>
+            store.dispatch({
+                type: 'LOADED'
+            })
+        );
     }
 }
 

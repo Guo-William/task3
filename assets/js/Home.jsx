@@ -44,9 +44,9 @@ export default function Login({ tasks }) {
                 <td>{assignee}</td>
                 <td>{task.timespent}</td>
                 <td className="text-right">
-                    <span><Link className={showClasses} to={"/tasks/" + task.id}>Show</Link></span>
-                    <span><Link className={editClasses} to={"/tasks/edit/" + task.id}>Edit</Link></span>
-                    <span><Link className={deleteClasses} to={"/tasks/delete/" + task.id}>Delete</Link></span>
+                    <span><Link className={showClasses} to={"/task/" + task.id}>Show</Link></span>
+                    <span><Link className={editClasses} to={"/task/edit/" + task.id}>Edit</Link></span>
+                    <span><Link className={deleteClasses} to={"/task/delete/" + task.id}>Delete</Link></span>
                 </td>
             </tr>
         );
