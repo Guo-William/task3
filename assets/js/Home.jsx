@@ -90,7 +90,7 @@ export default function Login({ tasks, tasksMap, dispatch }) {
             {makeTable("In progress Task", separate["INPROGRESS"], "bg-success")}
             {makeTable("Unstarted Task", separate["NOT STARTED"], "bg-warning")}
             {makeTable("Complete Task", separate["COMPLETE"], "bg-primary")}
-            <span><Link onClick={clear} className={newClasses} to="/tasks/new/">New Task</Link></span>
+            <span><Link onClick={clear} className={newClasses} to="/task/new/">New Task</Link></span>
         </Fragment>
     );
 }
