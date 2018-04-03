@@ -63,9 +63,40 @@ function taskForm(state = emptyTaskForm, action) {
     }
 }
 
+function token(state = null, action) {
+    switch (action.type) {
+        case 'SET_TOKEN':
+            return action.token;
+        default:
+            return state;
+    }
+}
+
+let empty_login_form = {
+    email: "",
+    pass: "",
+};
+
+function loginForm(state = empty_login_form, action) {
+    switch (action.type) {
+        case 'UPDATE_LOGIN_FORM':
+            return Object.assign({}, state, action.data);
+        default:
+            return state;
+    }
+}
+
 function root_reducer(state0, action) {
     console.log("reducer", action);
-    let reducer = combineReducers({ tasks, users, tasksMap, isLoaded, taskForm });
+    let reducer = combineReducers({
+        tasks,
+        users,
+        tasksMap,
+        isLoaded,
+        taskForm,
+        token,
+        loginForm
+    });
     let state1 = reducer(state0, action);
     console.log("state1", state1);
     return state1

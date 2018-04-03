@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Form, FormGroup, NavItem, Input, Button, Label } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import api from './api';
 
 export default function Task({ id, title, status, details, timespent, owner, assignee, dispatch }) {
     const editClasses = "btn btn-xs btn-primary";

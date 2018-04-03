@@ -36,7 +36,12 @@ defmodule Task3.Issue do
       ** (Ecto.NoResultsError)
 
   """
-  def get_task!(id), do: Repo.get!(Task, id)
+  def get_task!(id) do
+    Repo.get!(Task, id)
+    |> Repo.preload([:owner, :assignee])
+  end
+
+  # def get_task!(id), do: Repo.get!(Task, id)
 
   @doc """
   Creates a task.

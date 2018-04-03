@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
-import { Table } from 'reactstrap';
+import { Table, Button } from 'reactstrap';
 import { Link } from 'react-router-dom'
+import api from './api';
 
 function makeTable(tableName, rows, bgColor) {
     return (
@@ -77,7 +78,7 @@ export default function Login({ tasks, tasksMap, dispatch }) {
                 <td className="text-right">
                     <span><Link className={showClasses} to={"/task/" + task.id}>Show</Link></span>
                     <span><Link onClick={() => edit(tasksMap, task.id, dispatch)} className={editClasses} to={"/task/edit/" + task.id}>Edit</Link></span>
-                    <span><Link className={deleteClasses} to={"/task/delete/" + task.id}>Delete</Link></span>
+                    <span><Button onClick={() => api.delete_task(task.id)} className={deleteClasses}>Delete</Button></span>
                 </td>
             </tr>
         );

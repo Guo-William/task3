@@ -22,7 +22,7 @@ let Task3 = connect((state) => state)((props) => {
     const router = <Router>
         <Fragment>
             <Route path="/" exact={true} render={() =>
-                <Login />
+                <Login {...props} />
             } />
             <Route path="/home" exact={true} render={() =>
                 <Home {...props} />
@@ -38,7 +38,7 @@ let Task3 = connect((state) => state)((props) => {
             } />
         </Fragment>
     </Router>
-    const returnable = props.isLoaded ? router : null
+    let returnable = props.isLoaded ? router : null
     return returnable;
 });
 
