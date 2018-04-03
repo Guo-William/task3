@@ -9,3 +9,37 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+alias Task3.Repo
+alias Task3.Accounts.User
+alias Task3.Issue.Task
+
+Repo.insert!(%User{
+  email: "Jack@Jack.com",
+  username: "Jack"
+})
+
+Repo.insert!(%User{
+  email: "Jill@Jill.com",
+  username: "Jill"
+})
+
+Repo.insert!(%Task{
+  title: "test",
+  owner_id: 1,
+  assignee_id: 2,
+  status: "COMPLETE"
+})
+
+Repo.insert!(%Task{
+  title: "not done",
+  owner_id: 2,
+  assignee_id: 2,
+  status: "INPROGRESS"
+})
+
+Repo.insert!(%Task{
+  title: "not s",
+  owner_id: 2,
+  assignee_id: 1,
+  status: "NOT STARTED"
+})
