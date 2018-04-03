@@ -25,7 +25,38 @@ function makeTable(tableName, rows, bgColor) {
     );
 }
 
-export default function Login({ tasks }) {
+function edit(tasksMap, id, dispatch) {
+    const task = tasksMap[id];
+    let data = {
+        status: task.status,
+        title: task.title,
+        details: task.details || "",
+        assignee_id: task.assignee ? task.assignee.id : "",
+        timespent: task.timespent || "",
+        owner_id: task.owner.id,
+        id: task.id
+    };
+    let action = {
+        type: 'UPDATE_TASK_FORM',
+        data: data,
+    };
+    let clearAction = {
+        type: 'CLEAR_TASK_FORM',
+    }
+    const promise = new Promise(function (resolve, reject) {
+        dispatch(clearAction)
+    }).then(dispatch(action));
+}
+
+export default function Login({ tasks, tasksMap, dispatch }) {
+    let clearAction = {
+        type: 'CLEAR_TASK_FORM',
+    }
+
+    function clear() {
+        dispatch(clearAction)
+    }
+
     let separate = {
         "COMPLETE": [],
         "INPROGRESS": [],
@@ -45,7 +76,7 @@ export default function Login({ tasks }) {
                 <td>{task.timespent}</td>
                 <td className="text-right">
                     <span><Link className={showClasses} to={"/task/" + task.id}>Show</Link></span>
-                    <span><Link className={editClasses} to={"/task/edit/" + task.id}>Edit</Link></span>
+                    <span><Link onClick={() => edit(tasksMap, task.id, dispatch)} className={editClasses} to={"/task/edit/" + task.id}>Edit</Link></span>
                     <span><Link className={deleteClasses} to={"/task/delete/" + task.id}>Delete</Link></span>
                 </td>
             </tr>
@@ -59,7 +90,7 @@ export default function Login({ tasks }) {
             {makeTable("In progress Task", separate["INPROGRESS"], "bg-success")}
             {makeTable("Unstarted Task", separate["NOT STARTED"], "bg-warning")}
             {makeTable("Complete Task", separate["COMPLETE"], "bg-primary")}
-            <span><Link className={newClasses} to="/tasks/new/">New Task</Link></span>
+            <span><Link onClick={clear} className={newClasses} to="/tasks/new/">New Task</Link></span>
         </Fragment>
     );
 }

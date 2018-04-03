@@ -14,7 +14,7 @@ defmodule Task3.Issue.Task do
   end
 
   @doc false
-  def changeset(%Task{} = task, attrs) do
+  def changeset(task, attrs) do
     task
     |> cast(attrs, [:details, :title, :timespent, :owner_id, :status, :assignee_id])
     |> validate_required([:title])

@@ -25,8 +25,7 @@ import api from './api';
 
 import task3_init from "./Task3";
 $(function () {
-    api.request_tasks();
-    api.request_users();
+    api.request_data();
     task3_init(store);
 });
 

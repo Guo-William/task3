@@ -1,7 +1,7 @@
 import store from './store';
 
 class TheServer {
-    request_tasks() {
+    request_data() {
         $.ajax("/api/v1/tasks", {
             method: "get",
             dataType: "json",
@@ -12,11 +12,7 @@ class TheServer {
                     tasks: resp.data,
                 });
             },
-        });
-    }
-
-    request_users() {
-        $.ajax("/api/v1/users", {
+        }).then($.ajax("/api/v1/users", {
             method: "get",
             dataType: "json",
             contentType: "application/json; charset=UTF-8",
@@ -30,7 +26,16 @@ class TheServer {
             store.dispatch({
                 type: 'LOADED'
             })
-        );
+        ))
+    }
+
+    update_task(data) {
+        $.ajax("/api/v1/tasks", {
+            method: "post",
+            dataType: "json",
+            contentType: "application/json; charset=UTF-8",
+            data: JSON.stringify({ task: data }),
+        });
     }
 }
 

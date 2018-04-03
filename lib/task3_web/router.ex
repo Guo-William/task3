@@ -20,6 +20,8 @@ defmodule Task3Web.Router do
     get("/", PageController, :index)
     get("/home", PageController, :index)
     get("/task/:id", PageController, :index)
+    get("/task/edit/:id", PageController, :index)
+    get("/task/new", PageController, :index)
   end
 
   # Other scopes may use custom stacks.

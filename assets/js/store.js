@@ -25,12 +25,12 @@ function tasksMap(state = [], action) {
     }
 }
 
-function isLoaded(state = [], action) {
+function isLoaded(state = false, action) {
     switch (action.type) {
         case 'LOADED':
             return true
         default:
-            return false;
+            return state
     }
 }
 
@@ -43,9 +43,29 @@ function users(state = [], action) {
     }
 }
 
+let emptyTaskForm = {
+    assignee_id: "",
+    details: "",
+    status: "",
+    timespent: "",
+    title: "",
+};
+
+
+function taskForm(state = emptyTaskForm, action) {
+    switch (action.type) {
+        case 'CLEAR_TASK_FORM':
+            return emptyTaskForm;
+        case 'UPDATE_TASK_FORM':
+            return Object.assign({}, state, action.data);
+        default:
+            return state;
+    }
+}
+
 function root_reducer(state0, action) {
     console.log("reducer", action);
-    let reducer = combineReducers({ tasks, users, tasksMap, isLoaded });
+    let reducer = combineReducers({ tasks, users, tasksMap, isLoaded, taskForm });
     let state1 = reducer(state0, action);
     console.log("state1", state1);
     return state1
