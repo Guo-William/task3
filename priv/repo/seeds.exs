@@ -13,14 +13,18 @@ alias Task3.Repo
 alias Task3.Accounts.User
 alias Task3.Issue.Task
 
+p = Comeonin.Argon2.hashpwsalt("password1")
+
 Repo.insert!(%User{
   email: "Jack@Jack.com",
-  username: "Jack"
+  username: "Jack",
+  password_hash: p
 })
 
 Repo.insert!(%User{
   email: "Jill@Jill.com",
-  username: "Jill"
+  username: "Jill",
+  password_hash: p
 })
 
 Repo.insert!(%Task{
