@@ -5,7 +5,8 @@ defmodule Task3Web.TokenController do
   alias Task3.Accounts.User
 
   action_fallback(Task3Web.FallbackController)
-
+  # Taken from https://github.com/NatTuck/microblog-spa and
+  # changed for my needs
   def create(conn, %{"email" => email, "pass" => pass}) do
     with {:ok, %User{} = user} <- Task3.Accounts.get_and_auth_user(email, pass) do
       token = Phoenix.Token.sign(conn, "auth token", user.id)

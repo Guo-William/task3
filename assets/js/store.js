@@ -1,5 +1,7 @@
 import { createStore, combineReducers } from 'redux';
 
+// Parts of this taken from https://github.com/NatTuck/microblog-spa and
+// changed for my needs
 
 function tasks(state = [], action) {
     switch (action.type) {

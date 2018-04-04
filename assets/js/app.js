@@ -23,6 +23,8 @@ import "phoenix_html"
 import store from './store';
 import api from './api';
 
+// Taken from https://github.com/NatTuck/microblog-spa and
+// changed for my needs
 import task3_init from "./Task3";
 $(function () {
     api.request_data();

@@ -12,6 +12,8 @@ defmodule Task3Web.TaskController do
   end
 
   def create(conn, %{"task" => task_params}) do
+    # Taken from https://github.com/NatTuck/microblog-spa and
+    # changed for my needs
     {:ok, user_id} =
       Phoenix.Token.verify(conn, "auth token", task_params["token"], max_age: 86400)
 

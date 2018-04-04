@@ -39,6 +39,7 @@ defmodule Task3.Accounts do
 
   def get_and_auth_user(email, pass) do
     user = Repo.one(from(suser in User, where: suser.email == ^email))
+    # Taken from https://github.com/NatTuck/microblog-spa 
     Comeonin.Argon2.check_pass(user, pass)
   end
 

@@ -7,7 +7,8 @@ defmodule Task3.Accounts.User do
     field(:username, :string)
     field(:password_hash, :string)
     field(:password, :string, virtual: true)
-
+    # Taken from https://github.com/NatTuck/microblog-spa and
+    # changed for my needs
     timestamps()
   end
 

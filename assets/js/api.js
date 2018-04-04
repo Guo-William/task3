@@ -1,6 +1,8 @@
 import store from './store';
 
 class TheServer {
+    // Taken from https://github.com/NatTuck/microblog-spa and
+    // changed for my needs
     request_data() {
         $.ajax("/api/v1/tasks", {
             method: "get",
