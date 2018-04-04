@@ -125,7 +125,6 @@ function registrationForm(state = empty_registration_form, action) {
 
 
 function root_reducer(state0, action) {
-    console.log("reducer", action);
     let reducer = combineReducers({
         tasks,
         users,
@@ -138,7 +137,6 @@ function root_reducer(state0, action) {
         usersMap
     });
     let state1 = reducer(state0, action);
-    console.log("state1", state1);
     return state1
 };
 

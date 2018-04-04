@@ -56,8 +56,6 @@ defmodule Task3.Issue do
 
   """
   def create_task(attrs \\ %{}) do
-    IO.puts('====================CREATE TASKS 1 ')
-
     thing =
       %Task{}
       |> Task.changeset(attrs)

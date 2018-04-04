@@ -15,10 +15,6 @@ defmodule Task3.Issue.Task do
 
   @doc false
   def changeset(task, attrs) do
-    IO.puts('======================This happens 1=====================')
-    IO.inspect(attrs)
-    IO.puts('======================This happens 2=====================')
-
     task
     |> cast(attrs, [:details, :title, :timespent, :owner_id, :status, :assignee_id])
     |> validate_required([:title])
