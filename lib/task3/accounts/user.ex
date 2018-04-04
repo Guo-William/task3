@@ -13,8 +13,12 @@ defmodule Task3.Accounts.User do
 
   @doc false
   def changeset(user, attrs) do
+    pass = Map.get(attrs, "password")
+    password_hash = Comeonin.Argon2.hashpwsalt(pass)
+    with_hash = Map.put(attrs, "password_hash", password_hash)
+
     user
-    |> cast(attrs, [:username, :email, :password])
-    |> validate_required([:username, :email, :password])
+    |> cast(with_hash, [:username, :email, :password_hash])
+    |> validate_required([:username, :email, :password_hash])
   end
 end

@@ -29,7 +29,6 @@ export default function Task({ id, title, status, details, timespent, owner, ass
         }).then(dispatch(action));
     }
 
-
     return (
         <Fragment>
             <h2>Show Task</h2>

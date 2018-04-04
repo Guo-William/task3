@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { Form, FormGroup, NavItem, Input, Button, Label } from 'reactstrap';
 import api from './api';
 
@@ -17,14 +17,22 @@ export default function Login({ loginForm, dispatch, token }) {
   function create_token(ev) {
     ev.preventDefault();
     api.submit_login(loginForm);
-    console.log(loginForm);
   }
 
 
   let session_info;
-
+  const backClasses = "btn btn-xs btn-primary";
   if (token) {
-    session_info = <h1>Already Logged in! {token.user_id}</h1>
+    session_info = (
+      <Fragment>
+        <h1 className="text-center">Already Logged in! {token.user_id}</h1>
+        <div className="row">
+          <div className="col-4 offset-4 text-center">
+            <span><Link className={backClasses} to="/home">Home</Link></span>
+          </div>
+        </div>
+      </Fragment>
+    );
   }
   else {
     session_info = <Fragment>
@@ -40,7 +48,7 @@ export default function Login({ loginForm, dispatch, token }) {
               <Label for="pass">Password</Label>
               <Input type="password" name="pass" value={loginForm.pass} onChange={update} />
             </FormGroup>
-            <Button onClick={create_token}>Log In</Button>
+            <Link className={backClasses} onClick={create_token} to="/home">Home</Link>
             <FormGroup>
               <NavLink to="/register" href="#">Register</NavLink>
             </FormGroup>

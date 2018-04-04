@@ -7,6 +7,7 @@ import Login from './Login';
 import Home from './Home';
 import Task from './Task';
 import TaskEdit from './TaskEdit';
+import Register from './Register';
 
 export default function task3_init(store) {
     let root = document.getElementById('root');
@@ -27,14 +28,17 @@ let Task3 = connect((state) => state)((props) => {
             <Route path="/home" exact={true} render={() =>
                 <Home {...props} />
             } />
-            <Route path="/task/:id" exact={true} render={({ match }) =>
+            <Route path="/task/new/" exact={true} render={({ match }) =>
+                <TaskEdit isNew={true} />
+            } />
+            <Route path="/task/show/:id" exact={true} render={({ match }) =>
                 <Task {...props.tasksMap[match.params.id]} dispatch={props.dispatch} />
             } />
             <Route path="/task/edit/:id" exact={true} render={({ match }) =>
                 <TaskEdit id={match.params.id} isNew={false} />
             } />
-            <Route path="/tasks/new/" exact={true} render={({ match }) =>
-                <TaskEdit isNew={true} />
+            <Route path="/register" exact={true} render={({ match }) =>
+                <Register {...props} />
             } />
         </Fragment>
     </Router>

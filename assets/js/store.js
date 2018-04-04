@@ -81,10 +81,31 @@ function loginForm(state = empty_login_form, action) {
     switch (action.type) {
         case 'UPDATE_LOGIN_FORM':
             return Object.assign({}, state, action.data);
+        case 'CLEAR_LOGIN_FORM':
+            return empty_login_form;
         default:
             return state;
     }
 }
+
+let empty_registration_form = {
+    name: "",
+    email: "",
+    pass: "",
+};
+
+function registrationForm(state = empty_registration_form, action) {
+    switch (action.type) {
+        case 'UPDATE_REGISTRATION_FORM':
+            return Object.assign({}, state, action.data);
+        case 'CLEAR_REGISTRATION_FORM':
+            return empty_registration_form;
+        default:
+            return state;
+    }
+}
+
+
 
 function root_reducer(state0, action) {
     console.log("reducer", action);
@@ -95,7 +116,8 @@ function root_reducer(state0, action) {
         isLoaded,
         taskForm,
         token,
-        loginForm
+        loginForm,
+        registrationForm
     });
     let state1 = reducer(state0, action);
     console.log("state1", state1);

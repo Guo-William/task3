@@ -76,7 +76,7 @@ export default function Login({ tasks, tasksMap, dispatch }) {
                 <td>{assignee}</td>
                 <td>{task.timespent}</td>
                 <td className="text-right">
-                    <span><Link className={showClasses} to={"/task/" + task.id}>Show</Link></span>
+                    <span><Link className={showClasses} to={"/task/show/" + task.id}>Show</Link></span>
                     <span><Link onClick={() => edit(tasksMap, task.id, dispatch)} className={editClasses} to={"/task/edit/" + task.id}>Edit</Link></span>
                     <span><Button onClick={() => api.delete_task(task.id)} className={deleteClasses}>Delete</Button></span>
                 </td>

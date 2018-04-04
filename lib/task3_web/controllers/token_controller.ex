@@ -8,9 +8,7 @@ defmodule Task3Web.TokenController do
 
   def create(conn, %{"email" => email, "pass" => pass}) do
     with {:ok, %User{} = user} <- Task3.Accounts.get_and_auth_user(email, pass) do
-      IO.puts('------------------------------------------------IT IS HERE1')
       token = Phoenix.Token.sign(conn, "auth token", user.id)
-      IO.puts('------------------------------------------------IT IS HERE2')
 
       conn
       |> put_status(:created)

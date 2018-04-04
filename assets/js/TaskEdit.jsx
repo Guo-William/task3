@@ -31,7 +31,6 @@ function TaskEdit(props) {
     function submit(ev) {
         api.update_task(data);
     }
-
     return (
         <Fragment>
             <h2>{props.isNew ? "New task" : "Edit task"}</h2>
@@ -53,8 +52,8 @@ function TaskEdit(props) {
                     <Input type="textarea" name="details" value={props.taskForm.details} onChange={update} />
                 </FormGroup>
                 <FormGroup className="col-4">
-                    <Label for="assignee">Assignee</Label>
-                    <Input type="select" name="assignee" value={props.taskForm.assignee_id} onChange={update}>
+                    <Label for="assignee_id">Assignee</Label>
+                    <Input type="select" name="assignee_id" value={props.taskForm.assignee_id} onChange={update}>
                         <option></option>
                         {usersList}
                     </Input>
