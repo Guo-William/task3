@@ -17,6 +17,9 @@ export default function Login({ loginForm, dispatch, token }) {
   function create_token(ev) {
     ev.preventDefault();
     api.submit_login(loginForm);
+    dispatch({
+      type: 'CLEAR_LOGIN_FORM'
+    })
   }
 
 

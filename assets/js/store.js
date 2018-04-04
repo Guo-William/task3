@@ -43,6 +43,21 @@ function users(state = [], action) {
     }
 }
 
+function makeUserMap(users) {
+    let currMap = {};
+    _.each(users, (user) => currMap[user.id] = user)
+    return currMap
+}
+
+function usersMap(state = [], action) {
+    switch (action.type) {
+        case 'USERS_LIST':
+            return makeUserMap(action.users);
+        default:
+            return state;
+    }
+}
+
 let emptyTaskForm = {
     assignee_id: "",
     details: "",
@@ -67,6 +82,8 @@ function token(state = null, action) {
     switch (action.type) {
         case 'SET_TOKEN':
             return action.token;
+        case 'LOGOUT':
+            return null
         default:
             return state;
     }
@@ -117,7 +134,8 @@ function root_reducer(state0, action) {
         taskForm,
         token,
         loginForm,
-        registrationForm
+        registrationForm,
+        usersMap
     });
     let state1 = reducer(state0, action);
     console.log("state1", state1);
