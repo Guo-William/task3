@@ -12,6 +12,13 @@ defmodule Task3Web.TaskController do
   end
 
   def create(conn, %{"task" => task_params}) do
+    {:ok, user_id} =
+      Phoenix.Token.verify(conn, "auth token", task_params["token"], max_age: 86400)
+
+    if task_params["owner_id"] != user_id do
+      raise "Incorrect user!"
+    end
+
     with {:ok, %Task{} = task} <- Issue.create_task(task_params) do
       conn
       |> put_status(:created)

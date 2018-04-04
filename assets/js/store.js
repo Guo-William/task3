@@ -46,7 +46,7 @@ function users(state = [], action) {
 let emptyTaskForm = {
     assignee_id: "",
     details: "",
-    status: "",
+    status: "NOT STARTED",
     timespent: "",
     title: "",
 };

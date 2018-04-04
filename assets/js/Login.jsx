@@ -48,7 +48,7 @@ export default function Login({ loginForm, dispatch, token }) {
               <Label for="pass">Password</Label>
               <Input type="password" name="pass" value={loginForm.pass} onChange={update} />
             </FormGroup>
-            <Link className={backClasses} onClick={create_token} to="/home">Home</Link>
+            <Link className={backClasses} onClick={create_token} to="#">Login</Link>
             <FormGroup>
               <NavLink to="/register" href="#">Register</NavLink>
             </FormGroup>

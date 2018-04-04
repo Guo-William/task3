@@ -56,9 +56,16 @@ defmodule Task3.Issue do
 
   """
   def create_task(attrs \\ %{}) do
-    %Task{}
-    |> Task.changeset(attrs)
-    |> Repo.insert()
+    IO.puts('====================CREATE TASKS 1 ')
+
+    thing =
+      %Task{}
+      |> Task.changeset(attrs)
+      |> Repo.insert()
+
+    {:ok, thingNeeded} = thing
+    finalThing = get_task!(thingNeeded.id)
+    {:ok, finalThing}
   end
 
   @doc """
@@ -74,9 +81,14 @@ defmodule Task3.Issue do
 
   """
   def update_task(%Task{} = task, attrs) do
-    task
-    |> Task.changeset(attrs)
-    |> Repo.update()
+    thing =
+      task
+      |> Task.changeset(attrs)
+      |> Repo.update()
+
+    {:ok, thingNeeded} = thing
+    finalThing = get_task!(thingNeeded.id)
+    {:ok, finalThing}
   end
 
   @doc """

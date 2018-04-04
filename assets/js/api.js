@@ -48,6 +48,25 @@ class TheServer {
         }));
     }
 
+    create_task(data) {
+        $.ajax("/api/v1/tasks", {
+            method: "post",
+            dataType: "json",
+            contentType: "application/json; charset=UTF-8",
+            data: JSON.stringify({ task: data }),
+        }).then($.ajax("/api/v1/tasks", {
+            method: "get",
+            dataType: "json",
+            contentType: "application/json; charset=UTF-8",
+            success: (resp) => {
+                store.dispatch({
+                    type: 'TASKS_LIST',
+                    tasks: resp.data,
+                });
+            },
+        }));
+    }
+
 
 
     delete_task(id) {

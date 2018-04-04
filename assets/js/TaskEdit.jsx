@@ -17,6 +17,16 @@ function TaskEdit(props) {
         id: props.taskForm.id,
     };
 
+    let createTaskData = {
+        status: props.taskForm.status,
+        title: props.taskForm.title,
+        details: props.taskForm.details,
+        assignee_id: props.taskForm.assignee_id || "",
+        timespent: props.taskForm.timespent || "",
+        token: props.token.token,
+        owner_id: props.token.user_id
+    };
+
     function update(ev) {
         let target = $(ev.target);
 
@@ -28,9 +38,15 @@ function TaskEdit(props) {
         props.dispatch(action);
     }
 
-    function submit(ev) {
+    function submit_update() {
         api.update_task(data);
     }
+
+    function create_task() {
+        api.create_task(createTaskData);
+    }
+
+
     return (
         <Fragment>
             <h2>{props.isNew ? "New task" : "Edit task"}</h2>
@@ -63,7 +79,7 @@ function TaskEdit(props) {
                     <Input type="number" name="timespent" value={props.taskForm.timespent || ""} onChange={update} />
                 </FormGroup>
                 <FormGroup>
-                    <Link className="btn btn-primary" onClick={submit} to="/home">Submit</Link>
+                    <Link className="btn btn-primary" onClick={props.isNew ? create_task : submit_update} to="/home">Submit</Link>
                 </FormGroup>
                 <span><Link className="btn btn-xs btn-primary" to="/home">Back</Link></span>
             </Form>

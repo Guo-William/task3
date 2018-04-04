@@ -15,11 +15,26 @@ defmodule Task3.Issue.Task do
 
   @doc false
   def changeset(task, attrs) do
+    IO.puts('======================This happens 1=====================')
+    IO.inspect(attrs)
+    IO.puts('======================This happens 2=====================')
+
     task
     |> cast(attrs, [:details, :title, :timespent, :owner_id, :status, :assignee_id])
     |> validate_required([:title])
     |> fixTimeSpent
   end
+
+  # @doc false
+  # def changeset(user, attrs) do
+  #   pass = Map.get(attrs, "password")
+  #   password_hash = Comeonin.Argon2.hashpwsalt(pass)
+  #   with_hash = Map.put(attrs, "password_hash", password_hash)
+
+  #   user
+  #   |> cast(with_hash, [:username, :email, :password_hash])
+  #   |> validate_required([:username, :email, :password_hash])
+  # end
 
   defp fixTimeSpent(changeset) do
     timeEntered = get_field(changeset, :timespent)

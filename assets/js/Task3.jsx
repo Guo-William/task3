@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider, connect } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 import Login from './Login';
 import Home from './Home';
@@ -23,7 +23,9 @@ let Task3 = connect((state) => state)((props) => {
     const router = <Router>
         <Fragment>
             <Route path="/" exact={true} render={() =>
-                <Login {...props} />
+                props.token
+                    ? <Redirect to="/home" />
+                    : <Login {...props} />
             } />
             <Route path="/home" exact={true} render={() =>
                 <Home {...props} />
