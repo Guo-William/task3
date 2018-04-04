@@ -54,23 +54,3 @@ export default function Register({ registrationForm, dispatch }) {
         </div>
     </Fragment>);
 }
-
-
-
-
-
-{/* <div class="form-group col-auto">
-    <%= label f, :email, class: "control-label" %>
-    <%= text_input f, :email, class: "form-control" %>
-    <%= error_tag f, :email %>
-  </div>
-
-  <div class="form-group col-auto">
-    <%= label f, :username, class: "control-label" %>
-    <%= text_input f, :username, class: "form-control" %>
-    <%= error_tag f, :username %>
-  </div>
-
-  <div class="form-group col-auto">
-    <%= submit "Submit", class: "btn btn-primary" %>
-  </div> */}

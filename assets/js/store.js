@@ -122,6 +122,19 @@ function registrationForm(state = empty_registration_form, action) {
     }
 }
 
+function alert(state = "", action) {
+    switch (action.type) {
+        case 'SHOW_BAD_REG':
+            return "One of the registration fields was bad Please try again"
+        case 'SHOW_BAD_LOG':
+            return "Incorrect login information!"
+        case 'CLEAR_ALERT':
+            return "";
+        default:
+            return state;
+    }
+}
+
 
 
 function root_reducer(state0, action) {
@@ -134,7 +147,8 @@ function root_reducer(state0, action) {
         token,
         loginForm,
         registrationForm,
-        usersMap
+        usersMap,
+        alert
     });
     let state1 = reducer(state0, action);
     return state1

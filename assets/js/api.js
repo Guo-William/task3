@@ -98,8 +98,26 @@ class TheServer {
                     type: 'SET_TOKEN',
                     token: resp,
                 });
+                store.dispatch({
+                    type: 'CLEAR_ALERT',
+                })
             },
-        });
+            error: (resp) => {
+                store.dispatch({
+                    type: 'SHOW_BAD_LOG',
+                })
+            }
+        }).then($.ajax("/api/v1/users", {
+            method: "get",
+            dataType: "json",
+            contentType: "application/json; charset=UTF-8",
+            success: (resp) => {
+                store.dispatch({
+                    type: 'USERS_LIST',
+                    users: resp.data,
+                })
+            },
+        }));
     }
 
     create_user(data) {
@@ -107,7 +125,17 @@ class TheServer {
             method: "post",
             dataType: "json",
             contentType: "application/json; charset=UTF-8",
-            data: JSON.stringify({ user: data })
+            data: JSON.stringify({ user: data }),
+            success: (resp) => {
+                store.dispatch({
+                    type: 'CLEAR_ALERT'
+                })
+            },
+            error: (resp) => {
+                store.dispatch({
+                    type: 'SHOW_BAD_REG',
+                });
+            }
         });
     }
 }

@@ -20,5 +20,8 @@ defmodule Task3.Accounts.User do
     user
     |> cast(with_hash, [:username, :email, :password_hash])
     |> validate_required([:username, :email, :password_hash])
+    |> validate_format(:email, ~r/@/)
+    |> unique_constraint(:email)
+    |> unique_constraint(:username)
   end
 end

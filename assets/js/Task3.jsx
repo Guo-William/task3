@@ -42,9 +42,23 @@ let Task3 = connect((state) => state)((props) => {
         )
     }
 
+    let errorAlert = <Fragment />;
+    if (props.alert) {
+        errorAlert = (
+            <div className="row">
+                <div className="alert alert-danger w-100" role="alert">
+                    <span>
+                        {props.alert}
+                    </span>
+                </div>
+            </div>
+        )
+    }
+
     const router = <Router>
         <Fragment>
             {bar}
+            {errorAlert}
             <Route path="/" exact={true} render={() =>
                 props.token
                     ? <Redirect to="/home" />
