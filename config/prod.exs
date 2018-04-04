@@ -56,7 +56,7 @@ config :logger, level: :info
 # Alternatively, you can configure exactly which server to
 # start per endpoint:
 #
-#     config :task3, Task3Web.Endpoint, server: true
+config :task3, Task3Web.Endpoint, server: true
 #
 
 # Finally import the config/prod.secret.exs
